@@ -1,0 +1,87 @@
+</main>
+
+<footer>
+</footer>
+
+<div id="dropzone">
+    <div class="border"></div>
+</div>
+
+<script type="text/javascript">
+    function joinUntil(array, index, separator) {
+        var result = [];
+
+        for (var i = 0; i <= index; i++) {
+            result.push(array[i]);
+        }
+
+        return result.join(separator);
+    }
+
+    // Make all the icon links unfocusable with tab
+    var iconLinks = document.querySelectorAll('.indexcolicon a');
+    Array.prototype.forEach.call(iconLinks, function(link) {
+        link.setAttribute('tabindex', '-1');
+    });
+
+    var path = document.querySelector('.js-path');
+    var pathParts = location.pathname.split('/');
+
+    // Removing empty strings
+    for (var i = 0; i < pathParts.length;) {
+        if (pathParts[i]) {
+            i++;
+        } else {
+            pathParts.splice(i, 1);
+        }
+    }
+
+    var pathContents = ['<a href="/">/</a>'];
+    Array.prototype.forEach.call(pathParts, function(part, index) {
+        pathContents.push('<a href="/' + joinUntil(pathParts, index, '/') + '">' + decodeURI(part) + '</a>');
+    });
+
+    path.innerHTML = pathContents.join('&rsaquo;');
+
+    // upload
+
+    var dropzone = document.getElementById('dropzone');
+    document.getElementById('main').addEventListener('dragenter', onDragEnter, false);
+    dropzone.addEventListener('dragover', onDragOver, false);
+    dropzone.addEventListener('dragleave', onDragLeave, false);
+    dropzone.addEventListener('drop', onDropHandler, false);
+
+
+    function onDragEnter(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        dropzone.style.display = 'initial';
+    }
+
+    function onDragOver(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    function onDragLeave(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        dropzone.style.display = 'none';
+    }
+
+    function onDropHandler(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        uploadFiles(event.dataTransfer.files);
+        dropzone.style.display = 'none';
+    }
+
+    function uploadFiles(files) {
+        for (var file of files) {
+            var url = [document.location.href.replace(/\/$/, ''), file.name].join('/');
+            fetch(url, {method: 'PUT', body: file}).then(function(response) {
+                console.log(response);
+            });
+        }
+    }
+</script>
