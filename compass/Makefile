@@ -1,5 +1,5 @@
 build:
-	docker image build -t nrocco/compass .
+	docker image build --platform linux/amd64 -t nrocco/compass .
 
 push: build
 	docker image push nrocco/compass
