@@ -26,7 +26,7 @@ RUN apk update --no-cache \
         php7-xsl \
         php7-zip \
     && true
-ENV VERSION="2.0.21"
+ENV VERSION="2.0.22"
 RUN wget -O webtrees.zip "https://github.com/fisharebest/webtrees/releases/download/${VERSION}/webtrees-${VERSION}.zip" \
     && unzip -d /var/lib webtrees.zip \
     && rm -rf webtrees.zip \
