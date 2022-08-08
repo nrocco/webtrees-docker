@@ -2,29 +2,28 @@ FROM alpine:edge
 RUN apk update --no-cache \
     && apk add \
         apache2 \
-        php7 \
-        php7-apache2 \
-        php7-apcu \
-        php7-curl \
-        php7-exif \
-        php7-fileinfo \
-        php7-gd \
-        php7-iconv \
-        php7-imagick \
-        php7-imap \
-        php7-intl \
-        php7-json \
-        php7-mbstring \
-        php7-opcache \
-        php7-pear \
-        php7-pdo \
-        php7-pdo_sqlite \
-        php7-session \
-        php7-simplexml \
-        php7-sqlite3 \
-        php7-xmlrpc \
-        php7-xsl \
-        php7-zip \
+        php8 \
+        php8-apache2 \
+        php8-apcu \
+        php8-curl \
+        php8-exif \
+        php8-fileinfo \
+        php8-gd \
+        php8-iconv \
+        php8-imap \
+        php8-intl \
+        php8-json \
+        php8-mbstring \
+        php8-opcache \
+        php8-pdo \
+        php8-pdo_sqlite \
+        php8-pear \
+        php8-pecl-imagick \
+        php8-session \
+        php8-simplexml \
+        php8-sqlite3 \
+        php8-xsl \
+        php8-zip \
     && true
 EXPOSE 80
 RUN sed -ri \
