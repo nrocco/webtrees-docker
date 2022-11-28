@@ -32,7 +32,7 @@ RUN sed -ri \
         /etc/apache2/httpd.conf \
     && rm -f /etc/apache2/conf.d/info.conf /etc/apache2/conf.d/userdir.conf
 COPY httpd.conf /etc/apache2/conf.d/webtrees.conf
-ENV VERSION="2.1.7"
+ENV VERSION="2.1.8"
 RUN wget -O webtrees.zip "https://github.com/fisharebest/webtrees/releases/download/${VERSION}/webtrees-${VERSION}.zip" \
     && unzip -d /var/lib webtrees.zip \
     && rm -rf webtrees.zip \
