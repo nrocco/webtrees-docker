@@ -4,7 +4,6 @@ RUN apk update --no-cache \
         apache2 \
         php8 \
         php8-apache2 \
-        php8-apcu \
         php8-curl \
         php8-exif \
         php8-fileinfo \
@@ -12,12 +11,12 @@ RUN apk update --no-cache \
         php8-iconv \
         php8-imap \
         php8-intl \
-        php8-json \
         php8-mbstring \
         php8-opcache \
         php8-pdo \
         php8-pdo_sqlite \
         php8-pear \
+        php8-pecl-apcu \
         php8-pecl-imagick \
         php8-session \
         php8-simplexml \
