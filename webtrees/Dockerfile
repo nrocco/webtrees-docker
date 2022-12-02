@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.16
 RUN apk update --no-cache \
     && apk add \
         apache2 \
