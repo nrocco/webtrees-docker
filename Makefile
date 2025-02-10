@@ -1,10 +1,5 @@
-.PHONY: all
-all: tcpdump webtrees
+build:
+	docker image build --platform linux/amd64 -t nrocco/webtrees .
 
-.PHONY: tcpdump
-tcpdump:
-	$(MAKE) -C $@
-
-.PHONY: webtrees
-webtrees:
-	$(MAKE) -C $@
+push: build
+	docker image push nrocco/webtrees
