@@ -32,10 +32,10 @@ RUN sed -ri \
     && rm -f /etc/apache2/conf.d/info.conf /etc/apache2/conf.d/userdir.conf
 COPY httpd.conf /etc/apache2/conf.d/webtrees.conf
 ENV VERSION="2.2.1"
-RUN wget -O webtrees.zip "https://github.com/fisharebest/webtrees/releases/download/${VERSION}/webtrees-${VERSION}.zip" \
-    && unzip -d /var/lib webtrees.zip \
-    && rm -rf webtrees.zip \
-    && chown -R apache:apache /var/lib/webtrees/data \
-    && true
+RUN wget -O- "https://github.com/fisharebest/webtrees/releases/download/${VERSION}/webtrees-${VERSION}.zip" | unzip -d /var/lib -
+RUN mkdir -p /var/lib/webtrees/modules_v4/webtrees_simpleautologin
+RUN wget -O- "https://github.com/fanningert/webtrees_simpleautologin/archive/refs/tags/0.0.6.tar.gz" | tar xz --strip-components=1 --directory=/var/lib/webtrees/modules_v4/webtrees_simpleautologin
+RUN chown -R apache:apache /var/lib/webtrees/data
+RUN echo 'trusted_header_authenticated_user="HTTP_REMOTE_USER"' >> /var/lib/webtrees/data/config.ini.php
 VOLUME /var/lib/webtrees/data
 CMD ["httpd", "-DFOREGROUND"]
