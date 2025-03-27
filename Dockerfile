@@ -34,6 +34,7 @@ COPY httpd.conf /etc/apache2/conf.d/webtrees.conf
 ENV VERSION="2.2.1"
 RUN wget -O- "https://github.com/fisharebest/webtrees/releases/download/${VERSION}/webtrees-${VERSION}.zip" | unzip -d /var/lib -
 RUN wget -O- "https://github.com/magicsunday/webtrees-fan-chart/releases/download/3.0.0/webtrees-fan-chart.zip" | unzip -d /var/lib/webtrees/modules_v4 -
+RUN wget -O- "https://github.com/ekdahl/webtrees-primer-theme/releases/download/1.3.0/webtrees-primer-theme.zip" | unzip -d /var/lib/webtrees/modules_v4 -
 RUN mkdir -p /var/lib/webtrees/modules_v4/webtrees_simpleautologin
 RUN wget -O- "https://github.com/fanningert/webtrees_simpleautologin/archive/refs/tags/0.0.6.tar.gz" | tar xz --strip-components=1 --directory=/var/lib/webtrees/modules_v4/webtrees_simpleautologin
 RUN chown -R apache:apache /var/lib/webtrees/data
