@@ -32,7 +32,7 @@ RUN sed -ri \
         /etc/apache2/httpd.conf \
     && rm -f /etc/apache2/conf.d/info.conf /etc/apache2/conf.d/userdir.conf
 COPY httpd.conf /etc/apache2/conf.d/webtrees.conf
-RUN wget "https://github.com/fisharebest/webtrees/releases/download/2.2.5/webtrees-2.2.5.zip" && unzip -d /var/lib webtrees-2.2.5.zip && rm -f webtrees-2.2.5.zip
+RUN wget "https://github.com/fisharebest/webtrees/releases/download/2.2.6/webtrees-2.2.6.zip" && unzip -d /var/lib webtrees-2.2.6.zip && rm -f webtrees-2.2.6.zip
 RUN wget "https://github.com/Jefferson49/webtrees-oauth2-client/releases/download/v1.1.9/oauth2_client_v1.1.9.zip" && unzip -d /var/lib/webtrees/modules_v4 oauth2_client_v1.1.9.zip && rm -f oauth2_client_v1.1.9.zip
 RUN wget "https://github.com/ekdahl/webtrees-primer-theme/releases/download/1.3.2/webtrees-primer-theme-1.3.2.zip" && unzip -d /var/lib/webtrees/modules_v4 webtrees-primer-theme-1.3.2.zip && rm -f webtrees-primer-theme-1.3.2.zip
 RUN wget "https://github.com/magicsunday/webtrees-fan-chart/releases/download/3.0.0/webtrees-fan-chart.zip" && unzip -d /var/lib/webtrees/modules_v4 webtrees-fan-chart.zip && rm -f webtrees-fan-chart.zip
